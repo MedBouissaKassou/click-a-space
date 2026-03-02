@@ -36,6 +36,7 @@ interface Blueprint {
 const emptyForm = {
   name: "", bloc: "", niveau: "", tranche: "", surface: "", prix: "", rooms: "",
   status: "Disponible", description: "", features: "", blueprint_id: "",
+  image_blueprint_url: "", image_interior_url: "", image_simulation_url: "",
 };
 
 export default function ApartmentsManager() {
@@ -74,6 +75,9 @@ export default function ApartmentsManager() {
       description: form.description || null,
       features: form.features ? form.features.split(",").map((f) => f.trim()).filter(Boolean) : [],
       blueprint_id: form.blueprint_id || null,
+      image_blueprint_url: form.image_blueprint_url || null,
+      image_interior_url: form.image_interior_url || null,
+      image_simulation_url: form.image_simulation_url || null,
     };
 
     if (editing) {
@@ -105,6 +109,9 @@ export default function ApartmentsManager() {
       surface: a.surface?.toString() || "", prix: a.prix?.toString() || "", rooms: a.rooms?.toString() || "",
       status: a.status, description: a.description || "", features: a.features?.join(", ") || "",
       blueprint_id: a.blueprint_id || "",
+      image_blueprint_url: (a as any).image_blueprint_url || "",
+      image_interior_url: (a as any).image_interior_url || "",
+      image_simulation_url: (a as any).image_simulation_url || "",
     });
     setOpen(true);
   };
@@ -191,6 +198,21 @@ export default function ApartmentsManager() {
                 <div className="space-y-1">
                   <Label>Caractéristiques (séparées par des virgules)</Label>
                   <Input value={form.features} onChange={(e) => setForm({ ...form, features: e.target.value })} placeholder="Terrasse, Parking, ..." />
+                </div>
+                <div className="space-y-3 border-t pt-3 mt-3">
+                  <Label className="text-base font-semibold">Images de l'appartement</Label>
+                  <div className="space-y-1">
+                    <Label>URL Image Plan technique</Label>
+                    <Input value={form.image_blueprint_url} onChange={(e) => setForm({ ...form, image_blueprint_url: e.target.value })} placeholder="https://..." />
+                  </div>
+                  <div className="space-y-1">
+                    <Label>URL Image Plan intérieur</Label>
+                    <Input value={form.image_interior_url} onChange={(e) => setForm({ ...form, image_interior_url: e.target.value })} placeholder="https://..." />
+                  </div>
+                  <div className="space-y-1">
+                    <Label>URL Simulation 3D</Label>
+                    <Input value={form.image_simulation_url} onChange={(e) => setForm({ ...form, image_simulation_url: e.target.value })} placeholder="https://..." />
+                  </div>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? "En cours..." : editing ? "Mettre à jour" : "Ajouter"}
