@@ -17,7 +17,19 @@ export default function GalleryCarousel() {
     });
   }, []);
 
-  if (images.length === 0) return null;
+  if (images.length === 0) {
+    return (
+      <section id="galerie" className="py-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-3">Nos Réalisations</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Découvrez nos constructions et nos projets livrés
+          </p>
+          <p className="text-muted-foreground mt-8">Bientôt disponible</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="galerie" className="py-20 px-4">
