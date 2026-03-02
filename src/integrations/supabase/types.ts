@@ -23,6 +23,9 @@ export type Database = {
           display_order: number
           features: string[] | null
           id: string
+          image_blueprint_url: string | null
+          image_interior_url: string | null
+          image_simulation_url: string | null
           name: string
           niveau: string | null
           prix: number | null
@@ -41,6 +44,9 @@ export type Database = {
           display_order?: number
           features?: string[] | null
           id?: string
+          image_blueprint_url?: string | null
+          image_interior_url?: string | null
+          image_simulation_url?: string | null
           name: string
           niveau?: string | null
           prix?: number | null
@@ -59,6 +65,9 @@ export type Database = {
           display_order?: number
           features?: string[] | null
           id?: string
+          image_blueprint_url?: string | null
+          image_interior_url?: string | null
+          image_simulation_url?: string | null
           name?: string
           niveau?: string | null
           prix?: number | null
