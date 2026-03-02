@@ -14,16 +14,173 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      apartments: {
+        Row: {
+          bloc: string | null
+          blueprint_id: string | null
+          created_at: string
+          description: string | null
+          display_order: number
+          features: string[] | null
+          id: string
+          name: string
+          niveau: string | null
+          prix: number | null
+          rooms: number | null
+          status: string
+          surface: number | null
+          tranche: string | null
+          updated_at: string
+          zone: Json | null
+        }
+        Insert: {
+          bloc?: string | null
+          blueprint_id?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          features?: string[] | null
+          id?: string
+          name: string
+          niveau?: string | null
+          prix?: number | null
+          rooms?: number | null
+          status?: string
+          surface?: number | null
+          tranche?: string | null
+          updated_at?: string
+          zone?: Json | null
+        }
+        Update: {
+          bloc?: string | null
+          blueprint_id?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          features?: string[] | null
+          id?: string
+          name?: string
+          niveau?: string | null
+          prix?: number | null
+          rooms?: number | null
+          status?: string
+          surface?: number | null
+          tranche?: string | null
+          updated_at?: string
+          zone?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "apartments_blueprint_id_fkey"
+            columns: ["blueprint_id"]
+            isOneToOne: false
+            referencedRelation: "blueprints"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      blueprints: {
+        Row: {
+          created_at: string
+          display_order: number
+          floor_label: string
+          id: string
+          image_url: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number
+          floor_label: string
+          id?: string
+          image_url: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number
+          floor_label?: string
+          id?: string
+          image_url?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          id: string
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +307,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
