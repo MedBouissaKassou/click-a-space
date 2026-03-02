@@ -18,7 +18,6 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex items-center gap-8 text-sm font-medium text-muted-foreground">
             <a href="/#projet" className="hover:text-foreground transition-colors">Le Projet</a>
-            <a href="/#galerie" className="hover:text-foreground transition-colors">Galerie</a>
             <a href="/#plan" className="hover:text-foreground transition-colors">Plan</a>
             <a href="/#contact" className="hover:text-foreground transition-colors">Contact</a>
           </nav>
