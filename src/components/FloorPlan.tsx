@@ -71,10 +71,10 @@ export default function FloorPlan() {
   if (blueprints.length === 0) return null;
 
   return (
-    <section id="plan" className="py-20 px-4">
+    <section id="plan" className="py-10 md:py-20 px-2 md:px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-3">Plan Interactif</h2>
+        <div className="text-center mb-6 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Cliquez sur un appartement pour découvrir ses détails
           </p>
