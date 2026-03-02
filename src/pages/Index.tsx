@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import GalleryCarousel from "@/components/GalleryCarousel";
 import FloorPlan from "@/components/FloorPlan";
 import Footer from "@/components/Footer";
 import { Building, Ruler, ShieldCheck } from "lucide-react";
@@ -33,6 +34,7 @@ export default function Index() {
         </div>
       </section>
 
+      <GalleryCarousel />
       <FloorPlan />
       <Footer />
     </div>

@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
       <img
         src={heroImg}
-        alt="Résidence KONCEPT"
+        alt="Résidence OCEANA"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
@@ -14,7 +14,7 @@ export default function Hero() {
           Résidence de standing
         </p>
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-          Résidence KONCEPT
+          Résidence OCEANA
         </h1>
         <p className="text-muted-foreground text-lg max-w-xl">
           Découvrez nos appartements de standing allant de 65 à 115 m², livrés clé en main avec des finitions haut de gamme.
