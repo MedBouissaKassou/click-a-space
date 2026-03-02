@@ -1,20 +1,21 @@
 import { Navigate, Outlet, NavLink } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft } from "lucide-react";
+import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft, Image } from "lucide-react";
 
 const navItems = [
   { to: "/admin", icon: LayoutDashboard, label: "Tableau de bord", end: true },
   { to: "/admin/blueprints", icon: Map, label: "Plans & Étages" },
   { to: "/admin/apartments", icon: Building2, label: "Appartements" },
+  { to: "/admin/gallery", icon: Image, label: "Galerie" },
   { to: "/admin/settings", icon: Settings, label: "Paramètres du site" },
   { to: "/admin/admins", icon: Users, label: "Administrateurs" },
 ];
 
 export default function AdminLayout() {
-  const { user, isAdmin, loading, signOut } = useAuth();
+  const { user, isAdmin, loading, isReady, signOut } = useAuth();
 
-  if (loading) {
+  if (!isReady || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin w-8 h-8 border-2 border-accent border-t-transparent rounded-full" />
@@ -37,10 +38,9 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Sidebar */}
       <aside className="w-64 bg-card border-r border-border flex flex-col shrink-0">
         <div className="p-6 border-b border-border">
-          <h2 className="font-heading text-lg font-bold">Admin Panel</h2>
+          <h2 className="font-heading text-lg font-bold">OCEANA Admin</h2>
           <p className="text-xs text-muted-foreground mt-1 truncate">{user.email}</p>
         </div>
         <nav className="flex-1 p-3 space-y-1">
@@ -69,8 +69,6 @@ export default function AdminLayout() {
           </button>
         </div>
       </aside>
-
-      {/* Main */}
       <main className="flex-1 overflow-auto">
         <div className="p-6 md:p-8 max-w-6xl">
           <Outlet />

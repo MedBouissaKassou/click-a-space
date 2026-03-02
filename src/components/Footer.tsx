@@ -7,7 +7,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Building2 className="w-5 h-5" />
-            <span className="text-lg font-bold font-heading">KONCEPT</span>
+            <span className="text-lg font-bold font-heading">OCEANA</span>
           </div>
           <p className="text-sm opacity-70">
             L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein.
@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="font-semibold mb-3">Contact</h4>
-          <p className="text-sm opacity-70">contact@koncept-immobilier.com</p>
+          <p className="text-sm opacity-70">contact@oceana-immobilier.com</p>
           <p className="text-sm opacity-70 mt-1">+216 XX XXX XXX</p>
         </div>
         <div>
@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-primary-foreground/20 text-center text-xs opacity-50">
-        © 2026 KONCEPT. Tous droits réservés.
+        © 2026 OCEANA. Tous droits réservés.
       </div>
     </footer>
   );
