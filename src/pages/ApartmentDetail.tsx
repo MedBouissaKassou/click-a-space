@@ -3,10 +3,21 @@ import { getApartment, formatPrice } from "@/data/apartments";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowLeft, MapPin, Maximize, DoorOpen, CheckCircle2 } from "lucide-react";
+import floorPlanImg from "@/assets/floor-plan.png";
+import interiorPlanImg from "@/assets/interior-plan-default.jpg";
+import buildingSimImg from "@/assets/building-simulation-default.jpg";
+import { useState } from "react";
+
+const imageLabels = [
+  { src: floorPlanImg, label: "Plan de masse" },
+  { src: interiorPlanImg, label: "Plan intérieur aménagé" },
+  { src: buildingSimImg, label: "Simulation 3D" },
+];
 
 export default function ApartmentDetail() {
   const { id } = useParams<{ id: string }>();
   const apt = getApartment(id || "");
+  const [activeImg, setActiveImg] = useState(0);
 
   if (!apt) {
     return (
@@ -29,19 +40,50 @@ export default function ApartmentDetail() {
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="max-w-5xl mx-auto px-4 py-10">
+      <div className="max-w-6xl mx-auto px-4 py-10">
         <Link
           to="/#plan"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" /> Retour au plan
         </Link>
 
-        <div className="flex flex-col md:flex-row gap-2 items-start md:items-center mb-8">
+        <div className="flex flex-col md:flex-row gap-2 items-start md:items-center mb-6">
           <h1 className="text-4xl font-bold">{apt.name}</h1>
           <span className={`${statusClass} text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full ml-0 md:ml-4`}>
             {apt.status}
           </span>
+        </div>
+
+        {/* 3 Images Section */}
+        <div className="mb-10">
+          <div className="bg-card border border-border rounded-xl overflow-hidden">
+            <div className="aspect-[16/9] w-full bg-muted flex items-center justify-center">
+              <img
+                src={imageLabels[activeImg].src}
+                alt={imageLabels[activeImg].label}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3 mt-3">
+            {imageLabels.map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImg(i)}
+                className={`rounded-lg overflow-hidden border-2 transition-all ${
+                  activeImg === i
+                    ? "border-gold shadow-lg"
+                    : "border-border hover:border-muted-foreground/40"
+                }`}
+              >
+                <div className="aspect-[4/3] bg-muted">
+                  <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-center py-1.5 font-medium text-muted-foreground">{img.label}</p>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
