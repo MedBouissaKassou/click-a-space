@@ -113,14 +113,12 @@ export default function FloorPlan() {
             {apartments.filter((a) => a.zone).map((apt) => (
               <div
                 key={apt.id}
-                className="absolute cursor-pointer transition-all duration-200"
+                className="absolute cursor-pointer"
                 style={{
                   left: `${apt.zone!.x}%`,
                   top: `${apt.zone!.y}%`,
                   width: `${apt.zone!.width}%`,
                   height: `${apt.zone!.height}%`,
-                  backgroundColor: hovered?.id === apt.id ? statusBorder(apt.status) : statusColor(apt.status),
-                  border: `2px solid ${statusBorder(apt.status)}`,
                 }}
                 onMouseEnter={(e) => {
                   setHovered(apt);

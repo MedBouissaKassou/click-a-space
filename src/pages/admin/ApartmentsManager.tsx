@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { Plus, Trash2, Edit2, MapPin } from "lucide-react";
+import ImageUpload from "@/components/admin/ImageUpload";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
@@ -201,18 +202,21 @@ export default function ApartmentsManager() {
                 </div>
                 <div className="space-y-3 border-t pt-3 mt-3">
                   <Label className="text-base font-semibold">Images de l'appartement</Label>
-                  <div className="space-y-1">
-                    <Label>URL Image Plan technique</Label>
-                    <Input value={form.image_blueprint_url} onChange={(e) => setForm({ ...form, image_blueprint_url: e.target.value })} placeholder="https://..." />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>URL Image Plan intérieur</Label>
-                    <Input value={form.image_interior_url} onChange={(e) => setForm({ ...form, image_interior_url: e.target.value })} placeholder="https://..." />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>URL Simulation 3D</Label>
-                    <Input value={form.image_simulation_url} onChange={(e) => setForm({ ...form, image_simulation_url: e.target.value })} placeholder="https://..." />
-                  </div>
+                  <ImageUpload
+                    label="Plan technique"
+                    value={form.image_blueprint_url}
+                    onChange={(url) => setForm({ ...form, image_blueprint_url: url })}
+                  />
+                  <ImageUpload
+                    label="Plan intérieur"
+                    value={form.image_interior_url}
+                    onChange={(url) => setForm({ ...form, image_interior_url: url })}
+                  />
+                  <ImageUpload
+                    label="Simulation 3D"
+                    value={form.image_simulation_url}
+                    onChange={(url) => setForm({ ...form, image_simulation_url: url })}
+                  />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? "En cours..." : editing ? "Mettre à jour" : "Ajouter"}
