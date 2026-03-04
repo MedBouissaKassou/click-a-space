@@ -19,7 +19,7 @@ export default function Index() {
 
       <section id="projet" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Le Projet</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Projet en cours</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f) => (
               <div key={f.title} className="bg-card border border-border rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
