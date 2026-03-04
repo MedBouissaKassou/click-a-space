@@ -1,12 +1,13 @@
 import { Navigate, Outlet, NavLink } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft, Image } from "lucide-react";
+import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft, Image, ImageIcon } from "lucide-react";
 
 const navItems = [
   { to: "/admin", icon: LayoutDashboard, label: "Tableau de bord", end: true },
   { to: "/admin/blueprints", icon: Map, label: "Plans & Étages" },
   { to: "/admin/apartments", icon: Building2, label: "Appartements" },
+  { to: "/admin/hero-images", icon: ImageIcon, label: "Carrousel Hero" },
   { to: "/admin/gallery", icon: Image, label: "Galerie" },
   { to: "/admin/settings", icon: Settings, label: "Paramètres du site" },
   { to: "/admin/admins", icon: Users, label: "Administrateurs" },

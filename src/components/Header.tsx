@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Building2, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
+import ContactDialog from "./ContactDialog";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -17,9 +18,11 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <a href="/#projet" className="hover:text-foreground transition-colors">Le Projet</a>
+            <a href="/#projet" className="hover:text-foreground transition-colors">Projet en cours</a>
             <a href="/#plan" className="hover:text-foreground transition-colors">Plan</a>
-            <a href="/#contact" className="hover:text-foreground transition-colors">Contact</a>
+            <ContactDialog>
+              <button className="hover:text-foreground transition-colors">Contact</button>
+            </ContactDialog>
           </nav>
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="shrink-0">
             {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}

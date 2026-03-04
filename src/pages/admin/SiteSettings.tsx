@@ -18,6 +18,9 @@ const settingLabels: Record<string, { label: string; type: "text" | "textarea" }
   contact_phone: { label: "Téléphone", type: "text" },
   contact_email: { label: "Email de contact", type: "text" },
   contact_address: { label: "Adresse", type: "text" },
+  whatsapp_number: { label: "Numéro WhatsApp", type: "text" },
+  facebook_url: { label: "Lien Facebook", type: "text" },
+  instagram_url: { label: "Lien Instagram", type: "text" },
   footer_text: { label: "Texte du pied de page", type: "text" },
 };
 
@@ -78,7 +81,19 @@ export default function SiteSettings() {
         <Card>
           <CardHeader><CardTitle className="text-lg">Contact</CardTitle></CardHeader>
           <CardContent className="space-y-4">
-            {Object.entries(settingLabels).filter(([k]) => k.startsWith("contact_")).map(([key, config]) => (
+            {Object.entries(settingLabels).filter(([k]) => k.startsWith("contact_") || k === "whatsapp_number").map(([key, config]) => (
+              <div key={key} className="space-y-1">
+                <Label>{config.label}</Label>
+                <Input value={values[key] || ""} onChange={(e) => setValues({ ...values, [key]: e.target.value })} />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader><CardTitle className="text-lg">Réseaux sociaux</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            {Object.entries(settingLabels).filter(([k]) => k === "facebook_url" || k === "instagram_url").map(([key, config]) => (
               <div key={key} className="space-y-1">
                 <Label>{config.label}</Label>
                 <Input value={values[key] || ""} onChange={(e) => setValues({ ...values, [key]: e.target.value })} />
