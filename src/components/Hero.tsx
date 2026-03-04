@@ -65,7 +65,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
           Résidence OCEANA
         </h1>
-        <p className="text-white text-lg max-w-xl">
+        <p className="text-black dark:text-white text-lg max-w-xl">
           Découvrez nos appartements de standing allant de 65 à 115 m², livrés clé en main avec des finitions haut de gamme.
         </p>
         <a
