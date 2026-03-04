@@ -50,11 +50,11 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-16">
         {/* Catchy highlights */}
-        <div className="flex flex-wrap gap-3 mb-5">
-          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+        <div className="flex flex-col gap-2 mb-5">
+          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg w-fit">
             Facilité de paiements jusqu'en 2028
           </span>
-          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg w-fit">
             A partir de 245 MD TTC
           </span>
         </div>
@@ -65,7 +65,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
           Résidence OCEANA
         </h1>
-        <p className="text-muted-foreground text-lg max-w-xl">
+        <p className="text-white text-lg max-w-xl">
           Découvrez nos appartements de standing allant de 65 à 115 m², livrés clé en main avec des finitions haut de gamme.
         </p>
         <a
