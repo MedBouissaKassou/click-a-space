@@ -109,8 +109,6 @@ export default function ApartmentsManager() {
       status: a.status, description: a.description || "", features: a.features?.join(", ") || "",
       blueprint_id: a.blueprint_id || "",
       image_blueprint_url: (a as any).image_blueprint_url || "",
-      image_interior_url: (a as any).image_interior_url || "",
-      image_simulation_url: (a as any).image_simulation_url || "",
     });
     setOpen(true);
   };
