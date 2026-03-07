@@ -1,7 +1,7 @@
 import { Navigate, Outlet, NavLink } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft, Image, ImageIcon } from "lucide-react";
+import { LayoutDashboard, Building2, Map, Settings, Users, LogOut, ArrowLeft, Image, ImageIcon, LayoutGrid } from "lucide-react";
 
 const navItems = [
   { to: "/admin", icon: LayoutDashboard, label: "Tableau de bord", end: true },
