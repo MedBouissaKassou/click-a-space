@@ -66,10 +66,10 @@ export default function Hero() {
 
       {/* Highlighted badges - bottom right */}
       <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-2 items-end">
-        <span className="bg-gold/90 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-gold/50">
+        <span className="bg-black text-black dark:bg-gold/90 dark:text-white bg-white/90 text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-border dark:border-gold/50">
           Facilité de paiements jusqu'en 2028
         </span>
-        <span className="bg-gold/90 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-gold/50">
+        <span className="bg-white/90 text-black dark:bg-gold/90 dark:text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-border dark:border-gold/50">
           A partir de 245 MD TTC
         </span>
       </div>
