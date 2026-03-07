@@ -60,7 +60,7 @@ export default function FloorPlan() {
   if (blueprints.length === 0) return null;
 
   return (
-    <section id="plan" ref={sectionRef} className="py-4 md:py-16 px-0 md:px-4">
+    <section id="plan" className="py-4 md:py-16 px-0 md:px-4">
       <div className="w-full px-1 md:max-w-6xl md:mx-auto md:px-0">
         <div className="text-center mb-6 md:mb-12">
           <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
