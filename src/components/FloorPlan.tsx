@@ -34,31 +34,8 @@ export default function FloorPlan() {
   const [apartmentsByBp, setApartmentsByBp] = useState<Record<string, Apartment[]>>({});
   const [hovered, setHovered] = useState<Apartment | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-  const [showTutorial, setShowTutorial] = useState(false);
-  const [tutorialDismissed, setTutorialDismissed] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-
-  // Show tutorial when section scrolls into view
-  useEffect(() => {
-    if (tutorialDismissed || blueprints.length === 0) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !tutorialDismissed) {
-          setShowTutorial(true);
-          // Auto-dismiss after 5 seconds
-          setTimeout(() => {
-            setShowTutorial(false);
-            setTutorialDismissed(true);
-          }, 5000);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [blueprints.length, tutorialDismissed]);
 
   useEffect(() => {
     const load = async () => {
