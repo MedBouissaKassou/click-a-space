@@ -41,6 +41,7 @@ const App = () => (
                 <Route path="zone-editor" element={<ZoneEditor />} />
                 <Route path="hero-images" element={<HeroImagesManager />} />
                 <Route path="gallery" element={<GalleryManager />} />
+                <Route path="type-images" element={<TypeImagesManager />} />
                 <Route path="settings" element={<SiteSettings />} />
                 <Route path="admins" element={<AdminsManager />} />
               </Route>

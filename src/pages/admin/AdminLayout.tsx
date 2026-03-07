@@ -9,6 +9,7 @@ const navItems = [
   { to: "/admin/apartments", icon: Building2, label: "Appartements" },
   { to: "/admin/hero-images", icon: ImageIcon, label: "Carrousel Hero" },
   { to: "/admin/gallery", icon: Image, label: "Galerie" },
+  { to: "/admin/type-images", icon: LayoutGrid, label: "Images S+1 / S+2" },
   { to: "/admin/settings", icon: Settings, label: "Paramètres du site" },
   { to: "/admin/admins", icon: Users, label: "Administrateurs" },
 ];
