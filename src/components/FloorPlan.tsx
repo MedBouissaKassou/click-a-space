@@ -89,7 +89,7 @@ export default function FloorPlan() {
           {blueprints.map((blueprint) => {
             const apartments = apartmentsByBp[blueprint.id] || [];
             return (
-              <div key={blueprint.id} className="relative inline-block w-full bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+              <div className="relative inline-block w-full rounded-xl shadow-lg overflow-hidden border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-1 md:p-2">
                 {/* Plan name overlay */}
                 <div className="absolute top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm px-4 py-2 border-b border-border">
                   <h3 className="font-semibold text-lg">{blueprint.name} — {blueprint.floor_label}</h3>
