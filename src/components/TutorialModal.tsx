@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { X, MapPin } from "lucide-react";
+import { X, MapPin, Hand } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import tutorialBlueprint from "@/assets/tutorial-blueprint.png";
-import tutorialHand from "@/assets/tutorial-hand-pointer.png";
 
 const TUTORIAL_KEY = "tutorial_dismissed_v2";
 
