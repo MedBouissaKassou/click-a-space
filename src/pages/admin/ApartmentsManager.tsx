@@ -37,7 +37,7 @@ interface Blueprint {
 const emptyForm = {
   name: "", bloc: "", niveau: "", tranche: "", surface: "", prix: "", rooms: "",
   status: "Disponible", description: "", features: "", blueprint_id: "",
-  image_blueprint_url: "", image_interior_url: "", image_simulation_url: "",
+  image_blueprint_url: "",
 };
 
 export default function ApartmentsManager() {
