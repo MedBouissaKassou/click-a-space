@@ -77,8 +77,6 @@ export default function ApartmentsManager() {
       features: form.features ? form.features.split(",").map((f) => f.trim()).filter(Boolean) : [],
       blueprint_id: form.blueprint_id || null,
       image_blueprint_url: form.image_blueprint_url || null,
-      image_interior_url: form.image_interior_url || null,
-      image_simulation_url: form.image_simulation_url || null,
     };
 
     if (editing) {
