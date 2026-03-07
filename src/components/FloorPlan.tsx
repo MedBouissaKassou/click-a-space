@@ -63,8 +63,10 @@ export default function FloorPlan() {
     <section id="plan" className="py-4 md:py-16 px-0 md:px-4">
       <div className="w-full px-1 md:max-w-6xl md:mx-auto md:px-0">
         <div className="text-center mb-6 md:mb-12">
+          <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <div className="w-16 h-1 bg-accent mx-auto mt-3 rounded-full" />
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
             {isMobile
               ? "Appuyez sur un point coloré pour voir les détails"
               : "Cliquez sur un appartement pour découvrir ses détails"}
