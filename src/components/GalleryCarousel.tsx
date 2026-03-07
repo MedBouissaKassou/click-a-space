@@ -22,8 +22,10 @@ export default function GalleryCarousel() {
     return (
       <section id="galerie" className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
+          <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Portfolio</p>
           <h2 className="text-4xl font-bold mb-3">Nos Réalisations</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full" />
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
             Découvrez nos constructions et nos projets livrés
           </p>
           <p className="text-muted-foreground mt-8">Bientôt disponible</p>
