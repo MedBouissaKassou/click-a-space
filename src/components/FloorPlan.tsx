@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice } from "@/data/apartments";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Blueprint {
   id: string;
@@ -19,19 +20,28 @@ interface Apartment {
   zone: { x: number; y: number; width: number; height: number } | null;
 }
 
+const dotColor = (status: string) => {
+  switch (status) {
+    case "Disponible": return "bg-available";
+    case "Réservé": return "bg-reserved";
+    case "Vendu": return "bg-sold";
+    default: return "bg-muted-foreground";
+  }
+};
+
 export default function FloorPlan() {
   const [blueprints, setBlueprints] = useState<Blueprint[]>([]);
   const [apartmentsByBp, setApartmentsByBp] = useState<Record<string, Apartment[]>>({});
   const [hovered, setHovered] = useState<Apartment | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const load = async () => {
       const { data } = await supabase.from("blueprints").select("*").order("display_order");
       if (data && data.length > 0) {
         setBlueprints(data as Blueprint[]);
-        // Load apartments for all blueprints
         const { data: apts } = await supabase.from("apartments").select("id, name, surface, prix, status, zone, blueprint_id");
         if (apts) {
           const grouped: Record<string, Apartment[]> = {};
@@ -55,7 +65,9 @@ export default function FloorPlan() {
         <div className="text-center mb-6 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Cliquez sur un appartement pour découvrir ses détails
+            {isMobile
+              ? "Appuyez sur un point coloré pour voir les détails"
+              : "Cliquez sur un appartement pour découvrir ses détails"}
           </p>
 
           <div className="flex items-center justify-center gap-6 mt-6">
@@ -83,31 +95,50 @@ export default function FloorPlan() {
 
                 <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block" />
 
-                {apartments.filter((a) => a.zone).map((apt) => (
-                  <div
-                    key={apt.id}
-                    className="absolute cursor-pointer"
-                    style={{
-                      left: `${apt.zone!.x}%`,
-                      top: `${apt.zone!.y}%`,
-                      width: `${apt.zone!.width}%`,
-                      height: `${apt.zone!.height}%`,
-                    }}
-                    onMouseEnter={(e) => {
-                      setHovered(apt);
-                      setTooltipPos({ x: e.clientX + 16, y: e.clientY - 10 });
-                    }}
-                    onMouseMove={(e) => setTooltipPos({ x: e.clientX + 16, y: e.clientY - 10 })}
-                    onMouseLeave={() => setHovered(null)}
-                    onClick={() => navigate(`/appartement/${apt.id}`)}
-                  />
-                ))}
+                {apartments.filter((a) => a.zone).map((apt) => {
+                  const zone = apt.zone!;
+                  if (isMobile) {
+                    // Mobile: show a colored dot at the center of the zone
+                    return (
+                      <button
+                        key={apt.id}
+                        className={`absolute z-20 w-4 h-4 rounded-full ${dotColor(apt.status)} border-2 border-white shadow-md animate-pulse`}
+                        style={{
+                          left: `${zone.x + zone.width / 2}%`,
+                          top: `${zone.y + zone.height / 2}%`,
+                          transform: "translate(-50%, -50%)",
+                        }}
+                        onClick={() => navigate(`/appartement/${apt.id}`)}
+                      />
+                    );
+                  }
+                  // Desktop: invisible clickable zone with hover tooltip
+                  return (
+                    <div
+                      key={apt.id}
+                      className="absolute cursor-pointer"
+                      style={{
+                        left: `${zone.x}%`,
+                        top: `${zone.y}%`,
+                        width: `${zone.width}%`,
+                        height: `${zone.height}%`,
+                      }}
+                      onMouseEnter={(e) => {
+                        setHovered(apt);
+                        setTooltipPos({ x: e.clientX + 16, y: e.clientY - 10 });
+                      }}
+                      onMouseMove={(e) => setTooltipPos({ x: e.clientX + 16, y: e.clientY - 10 })}
+                      onMouseLeave={() => setHovered(null)}
+                      onClick={() => navigate(`/appartement/${apt.id}`)}
+                    />
+                  );
+                })}
               </div>
             );
           })}
         </div>
 
-        {hovered && (
+        {hovered && !isMobile && (
           <div
             className="fixed z-50 pointer-events-none bg-card border border-border rounded-lg shadow-xl px-4 py-3 min-w-[200px]"
             style={{ left: tooltipPos.x, top: tooltipPos.y }}
