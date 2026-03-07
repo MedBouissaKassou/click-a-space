@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { X, MapPin, Hand } from "lucide-react";
+import { X, MapPin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import tutorialBlueprint from "@/assets/tutorial-blueprint.png";
+import handPointer from "@/assets/hand-pointer.png";
 
 const TUTORIAL_KEY = "tutorial_dismissed_v2";
 
@@ -68,21 +69,12 @@ export default function TutorialModal() {
             alt="Plan interactif"
             className="w-full h-auto object-contain"
           />
-          {/* Animated tapping hand icon - centered on CO3 zone */}
-          <div
-            className="absolute pointer-events-none animate-tutorial-tap"
-            style={{ top: "18%", left: "52%" }}
-          >
-            <Hand className="w-10 h-10 md:w-14 md:h-14 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" fill="white" fillOpacity={0.15} />
-          </div>
-          {/* Ripple effect at fingertip position */}
-          <div
-            className="absolute w-6 h-6 md:w-10 md:h-10 rounded-full border-2 border-white pointer-events-none animate-tutorial-ripple"
-            style={{ top: "28%", left: "56%", transform: "translate(-50%, -50%)" }}
-          />
-          <div
-            className="absolute w-3 h-3 md:w-5 md:h-5 rounded-full bg-white/40 pointer-events-none animate-tutorial-ripple"
-            style={{ top: "28%", left: "56%", transform: "translate(-50%, -50%)", animationDelay: "0.15s" }}
+          {/* Animated tapping hand - centered on CO3 zone */}
+          <img
+            src={handPointer}
+            alt=""
+            className="absolute w-12 h-12 md:w-16 md:h-16 pointer-events-none animate-tutorial-tap invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            style={{ top: "15%", left: "50%" }}
           />
         </div>
 
