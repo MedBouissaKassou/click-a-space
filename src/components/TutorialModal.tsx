@@ -20,7 +20,7 @@ export default function TutorialModal() {
 
   const handleClose = () => {
     setOpen(false);
-    sessionStorage.setItem("tutorial_dismissed", "true");
+    localStorage.setItem(TUTORIAL_KEY, "true");
   };
 
   if (!open) return null;
