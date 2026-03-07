@@ -32,7 +32,9 @@ export default function TypeImagesSection({ category, label }: TypeImagesSection
     return (
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
+          <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Appartements</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">{label}</h2>
+          <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full" />
           <p className="text-muted-foreground mt-4">Bientôt disponible</p>
         </div>
       </section>
@@ -43,7 +45,11 @@ export default function TypeImagesSection({ category, label }: TypeImagesSection
     <>
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">{label}</h2>
+          <div className="text-center mb-10">
+            <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Appartements</p>
+            <h2 className="text-3xl md:text-4xl font-bold">{label}</h2>
+            <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full" />
+          </div>
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             {images.slice(0, 4).map((img) => (
               <div

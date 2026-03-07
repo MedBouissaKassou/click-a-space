@@ -63,8 +63,10 @@ export default function FloorPlan() {
     <section id="plan" className="py-4 md:py-16 px-0 md:px-4">
       <div className="w-full px-1 md:max-w-6xl md:mx-auto md:px-0">
         <div className="text-center mb-6 md:mb-12">
+          <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <div className="w-16 h-1 bg-accent mx-auto mt-3 rounded-full" />
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
             {isMobile
               ? "Appuyez sur un point coloré pour voir les détails"
               : "Cliquez sur un appartement pour découvrir ses détails"}
@@ -87,7 +89,7 @@ export default function FloorPlan() {
           {blueprints.map((blueprint) => {
             const apartments = apartmentsByBp[blueprint.id] || [];
             return (
-              <div key={blueprint.id} className="relative inline-block w-full bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+              <div className="relative inline-block w-full rounded-xl shadow-lg overflow-hidden border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-1 md:p-2">
                 {/* Plan name overlay */}
                 <div className="absolute top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm px-4 py-2 border-b border-border">
                   <h3 className="font-semibold text-lg">{blueprint.name} — {blueprint.floor_label}</h3>
