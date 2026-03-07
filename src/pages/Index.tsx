@@ -35,9 +35,9 @@ export default function Index() {
         </div>
       </section>
 
-      <FloorPlan />
       <TypeImagesSection category="s1" label="S+1" />
       <TypeImagesSection category="s2" label="S+2" />
+      <FloorPlan />
       <GalleryCarousel />
       <Footer />
     </div>
