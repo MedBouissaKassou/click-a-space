@@ -4,21 +4,23 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import tutorialBlueprint from "@/assets/tutorial-blueprint.png";
 import tutorialHand from "@/assets/tutorial-hand-pointer.png";
 
+const TUTORIAL_KEY = "tutorial_dismissed_v2";
+
 export default function TutorialModal() {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("tutorial_dismissed");
+    const dismissed = localStorage.getItem(TUTORIAL_KEY);
     if (!dismissed) {
-      const timer = setTimeout(() => setOpen(true), 1200);
+      const timer = setTimeout(() => setOpen(true), 800);
       return () => clearTimeout(timer);
     }
   }, []);
 
   const handleClose = () => {
     setOpen(false);
-    sessionStorage.setItem("tutorial_dismissed", "true");
+    localStorage.setItem(TUTORIAL_KEY, "true");
   };
 
   if (!open) return null;
