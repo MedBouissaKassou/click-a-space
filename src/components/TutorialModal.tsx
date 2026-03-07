@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { X, MapPin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import tutorialGif from "@/assets/tutorial-hand.gif";
+import tutorialBlueprint from "@/assets/tutorial-blueprint.png";
+import tutorialHand from "@/assets/tutorial-hand-pointer.png";
 
 export default function TutorialModal() {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function TutorialModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in p-3 md:p-6">
-      <div className="relative bg-card border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in">
+      <div className="relative bg-card border border-border rounded-2xl shadow-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto animate-scale-in">
         {/* Close button */}
         <button
           onClick={handleClose}
@@ -33,28 +34,17 @@ export default function TutorialModal() {
           <X className="w-5 h-5" />
         </button>
 
-        {/* GIF preview */}
-        <div className="w-full overflow-hidden rounded-t-2xl bg-muted/30">
-          <img
-            src={tutorialGif}
-            alt="Tutorial - cliquez sur une zone du plan"
-            className="w-full h-auto object-contain"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="p-5 md:p-8 flex flex-col items-center text-center gap-4">
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold mb-2">Comment explorer les plans ?</h3>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              {isMobile
-                ? "Appuyez sur les points colorés sur le plan pour voir les détails de chaque appartement."
-                : "Survolez les zones du plan interactif et cliquez pour découvrir les détails de chaque appartement."}
-            </p>
-          </div>
+        {/* Content - ABOVE the image */}
+        <div className="p-5 md:p-8 flex flex-col items-center text-center gap-3">
+          <h3 className="text-xl md:text-2xl font-bold">Comment explorer les plans ?</h3>
+          <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md">
+            {isMobile
+              ? "Appuyez sur une zone colorée du plan pour voir les détails de chaque appartement."
+              : "Cliquez sur une zone du plan interactif pour découvrir les détails de chaque appartement."}
+          </p>
 
           {/* Legend */}
-          <div className="w-full bg-muted/50 rounded-xl p-4 flex flex-wrap justify-center gap-4 md:gap-6">
+          <div className="w-full bg-muted/50 rounded-xl p-3 flex flex-wrap justify-center gap-4 md:gap-6">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-available" />
               <span className="text-sm">Disponible</span>
@@ -68,10 +58,34 @@ export default function TutorialModal() {
               <span className="text-sm">Vendu</span>
             </div>
           </div>
+        </div>
 
+        {/* Blueprint image with animated hand */}
+        <div className="relative w-full overflow-hidden bg-muted/20 mx-auto">
+          <img
+            src={tutorialBlueprint}
+            alt="Plan interactif"
+            className="w-full h-auto object-contain"
+          />
+          {/* Animated tapping hand */}
+          <img
+            src={tutorialHand}
+            alt=""
+            className="absolute w-16 h-16 md:w-24 md:h-24 pointer-events-none animate-tutorial-tap"
+            style={{ top: "35%", left: "45%" }}
+          />
+          {/* Ripple effect at tap point */}
+          <div
+            className="absolute w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-accent pointer-events-none animate-tutorial-ripple"
+            style={{ top: "52%", left: "52%", transform: "translate(-50%, -50%)" }}
+          />
+        </div>
+
+        {/* CTA button */}
+        <div className="p-5 md:p-8 pt-4">
           <button
             onClick={handleClose}
-            className="w-full mt-1 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm md:text-base"
+            className="w-full px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm md:text-base"
           >
             <MapPin className="w-4 h-4" />
             Compris, explorer le plan
