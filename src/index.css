@@ -124,6 +124,13 @@
   .animate-glow {
     animation: glow 2.5s ease-in-out infinite;
   }
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bounce-gentle {
+    animation: bounce-gentle 1.5s ease-in-out infinite;
+  }
   .text-gold {
     color: hsl(var(--gold));
   }
