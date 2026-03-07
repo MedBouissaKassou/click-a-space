@@ -18,6 +18,7 @@ export default function Index() {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <TutorialModal />
 
       <section id="projet" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">

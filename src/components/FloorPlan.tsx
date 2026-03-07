@@ -97,27 +97,6 @@ export default function FloorPlan() {
 
                 <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block rounded-lg" />
 
-                {/* Tutorial overlay - only on first blueprint */}
-                {showTutorial && blueprint.id === blueprints[0]?.id && (
-                  <div
-                    className="absolute inset-0 z-30 flex items-center justify-center bg-black/40 backdrop-blur-[2px] rounded-lg animate-fade-in cursor-pointer"
-                    onClick={() => { setShowTutorial(false); setTutorialDismissed(true); }}
-                  >
-                    <div className="flex flex-col items-center gap-3 text-white animate-bounce-gentle">
-                      {isMobile ? (
-                        <Hand className="w-12 h-12 text-accent drop-shadow-lg" />
-                      ) : (
-                        <MousePointerClick className="w-12 h-12 text-accent drop-shadow-lg" />
-                      )}
-                      <p className="text-base md:text-lg font-semibold text-center px-4 drop-shadow-lg">
-                        {isMobile
-                          ? "Appuyez sur un point pour voir les détails"
-                          : "Cliquez sur un appartement pour voir les détails"}
-                      </p>
-                      <span className="text-xs text-white/70 mt-1">Touchez pour fermer</span>
-                    </div>
-                  </div>
-                )}
 
                 {apartments.filter((a) => a.zone).map((apt) => {
                   const zone = apt.zone!;
