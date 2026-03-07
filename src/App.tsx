@@ -18,6 +18,7 @@ import SiteSettings from "./pages/admin/SiteSettings";
 import AdminsManager from "./pages/admin/AdminsManager";
 import GalleryManager from "./pages/admin/GalleryManager";
 import HeroImagesManager from "./pages/admin/HeroImagesManager";
+import TypeImagesManager from "./pages/admin/TypeImagesManager";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="zone-editor" element={<ZoneEditor />} />
                 <Route path="hero-images" element={<HeroImagesManager />} />
                 <Route path="gallery" element={<GalleryManager />} />
+                <Route path="type-images" element={<TypeImagesManager />} />
                 <Route path="settings" element={<SiteSettings />} />
                 <Route path="admins" element={<AdminsManager />} />
               </Route>

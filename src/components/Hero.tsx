@@ -21,7 +21,6 @@ export default function Hero() {
       });
   }, []);
 
-  // Auto-play carousel
   useEffect(() => {
     if (images.length <= 1) return;
     const interval = setInterval(() => {
@@ -34,7 +33,6 @@ export default function Hero() {
 
   return (
     <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
-      {/* Carousel images */}
       {bgImages.map((src, i) => (
         <img
           key={i}
@@ -49,16 +47,6 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
       <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-16">
-        {/* Catchy highlights */}
-        <div className="flex flex-col gap-2 mb-5">
-          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg w-fit">
-            Facilité de paiements jusqu'en 2028
-          </span>
-          <span className="bg-accent text-accent-foreground text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-lg w-fit">
-            A partir de 245 MD TTC
-          </span>
-        </div>
-
         <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-3">
           Résidence de standing
         </p>
@@ -76,7 +64,16 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Carousel dots */}
+      {/* Highlighted badges - bottom right */}
+      <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-2 items-end">
+        <span className="bg-gold/90 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-gold/50">
+          Facilité de paiements jusqu'en 2028
+        </span>
+        <span className="bg-gold/90 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-gold/50">
+          A partir de 245 MD TTC
+        </span>
+      </div>
+
       {bgImages.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
           {bgImages.map((_, i) => (
