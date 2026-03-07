@@ -37,7 +37,7 @@ interface Blueprint {
 const emptyForm = {
   name: "", bloc: "", niveau: "", tranche: "", surface: "", prix: "", rooms: "",
   status: "Disponible", description: "", features: "", blueprint_id: "",
-  image_blueprint_url: "", image_interior_url: "", image_simulation_url: "",
+  image_blueprint_url: "",
 };
 
 export default function ApartmentsManager() {
@@ -77,8 +77,6 @@ export default function ApartmentsManager() {
       features: form.features ? form.features.split(",").map((f) => f.trim()).filter(Boolean) : [],
       blueprint_id: form.blueprint_id || null,
       image_blueprint_url: form.image_blueprint_url || null,
-      image_interior_url: form.image_interior_url || null,
-      image_simulation_url: form.image_simulation_url || null,
     };
 
     if (editing) {
@@ -111,8 +109,6 @@ export default function ApartmentsManager() {
       status: a.status, description: a.description || "", features: a.features?.join(", ") || "",
       blueprint_id: a.blueprint_id || "",
       image_blueprint_url: (a as any).image_blueprint_url || "",
-      image_interior_url: (a as any).image_interior_url || "",
-      image_simulation_url: (a as any).image_simulation_url || "",
     });
     setOpen(true);
   };
@@ -201,21 +197,11 @@ export default function ApartmentsManager() {
                   <Input value={form.features} onChange={(e) => setForm({ ...form, features: e.target.value })} placeholder="Terrasse, Parking, ..." />
                 </div>
                 <div className="space-y-3 border-t pt-3 mt-3">
-                  <Label className="text-base font-semibold">Images de l'appartement</Label>
+                  <Label className="text-base font-semibold">Image du plan</Label>
                   <ImageUpload
-                    label="Plan technique"
+                    label="Plan de l'appartement"
                     value={form.image_blueprint_url}
                     onChange={(url) => setForm({ ...form, image_blueprint_url: url })}
-                  />
-                  <ImageUpload
-                    label="Plan intérieur"
-                    value={form.image_interior_url}
-                    onChange={(url) => setForm({ ...form, image_interior_url: url })}
-                  />
-                  <ImageUpload
-                    label="Simulation 3D"
-                    value={form.image_simulation_url}
-                    onChange={(url) => setForm({ ...form, image_simulation_url: url })}
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
