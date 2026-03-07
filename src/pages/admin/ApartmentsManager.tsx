@@ -197,21 +197,11 @@ export default function ApartmentsManager() {
                   <Input value={form.features} onChange={(e) => setForm({ ...form, features: e.target.value })} placeholder="Terrasse, Parking, ..." />
                 </div>
                 <div className="space-y-3 border-t pt-3 mt-3">
-                  <Label className="text-base font-semibold">Images de l'appartement</Label>
+                  <Label className="text-base font-semibold">Image du plan</Label>
                   <ImageUpload
-                    label="Plan technique"
+                    label="Plan de l'appartement"
                     value={form.image_blueprint_url}
                     onChange={(url) => setForm({ ...form, image_blueprint_url: url })}
-                  />
-                  <ImageUpload
-                    label="Plan intérieur"
-                    value={form.image_interior_url}
-                    onChange={(url) => setForm({ ...form, image_interior_url: url })}
-                  />
-                  <ImageUpload
-                    label="Simulation 3D"
-                    value={form.image_simulation_url}
-                    onChange={(url) => setForm({ ...form, image_simulation_url: url })}
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
