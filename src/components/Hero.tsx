@@ -46,7 +46,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-6 md:pb-16">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-12 md:pb-16">
         <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-3 bg-background/70 backdrop-blur-sm inline-block px-3 py-1 rounded">
           Résidence de standing
         </p>
