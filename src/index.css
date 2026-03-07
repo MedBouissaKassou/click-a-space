@@ -110,6 +110,20 @@
   .animate-pulse-slow {
     animation: pulse-slow 2.5s ease-in-out infinite;
   }
+  @keyframes badge-slide-in {
+    0% { opacity: 0; transform: translateX(40px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  .animate-badge-slide-in {
+    animation: badge-slide-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.6; filter: blur(4px); }
+    50% { opacity: 1; filter: blur(8px); }
+  }
+  .animate-glow {
+    animation: glow 2.5s ease-in-out infinite;
+  }
   .text-gold {
     color: hsl(var(--gold));
   }
