@@ -65,13 +65,19 @@ export default function Hero() {
       </div>
 
       {/* Highlighted badges - bottom right */}
-      <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-2 items-end">
-        <span className="bg-black text-black dark:bg-gold/90 dark:text-white bg-white/90 text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-border dark:border-gold/50">
-          Facilité de paiements jusqu'en 2028
-        </span>
-        <span className="bg-white/90 text-black dark:bg-gold/90 dark:text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-md shadow-lg backdrop-blur-sm border border-border dark:border-gold/50">
-          A partir de 245 MD TTC
-        </span>
+      <div className="absolute bottom-6 right-4 md:bottom-8 md:right-8 z-10 flex flex-col gap-3 items-end">
+        <div className="relative group animate-pulse-slow">
+          <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75" />
+          <span className="relative block bg-navy text-white text-sm sm:text-base font-bold px-6 py-3 rounded-lg shadow-2xl tracking-wide">
+            💳 Facilité de paiements jusqu'en 2028
+          </span>
+        </div>
+        <div className="relative group animate-pulse-slow" style={{ animationDelay: '0.5s' }}>
+          <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75" />
+          <span className="relative block bg-navy text-white text-sm sm:text-base font-bold px-6 py-3 rounded-lg shadow-2xl tracking-wide">
+            🏷️ A partir de 245 MD TTC
+          </span>
+        </div>
       </div>
 
       {bgImages.length > 1 && (
