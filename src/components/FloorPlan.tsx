@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice } from "@/data/apartments";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { MousePointerClick, Hand } from "lucide-react";
 
 interface Blueprint {
   id: string;
@@ -34,8 +35,31 @@ export default function FloorPlan() {
   const [apartmentsByBp, setApartmentsByBp] = useState<Record<string, Apartment[]>>({});
   const [hovered, setHovered] = useState<Apartment | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [tutorialDismissed, setTutorialDismissed] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+
+  // Show tutorial when section scrolls into view
+  useEffect(() => {
+    if (tutorialDismissed || blueprints.length === 0) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !tutorialDismissed) {
+          setShowTutorial(true);
+          // Auto-dismiss after 5 seconds
+          setTimeout(() => {
+            setShowTutorial(false);
+            setTutorialDismissed(true);
+          }, 5000);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [blueprints.length, tutorialDismissed]);
 
   useEffect(() => {
     const load = async () => {
@@ -60,7 +84,7 @@ export default function FloorPlan() {
   if (blueprints.length === 0) return null;
 
   return (
-    <section id="plan" className="py-4 md:py-16 px-0 md:px-4">
+    <section id="plan" ref={sectionRef} className="py-4 md:py-16 px-0 md:px-4">
       <div className="w-full px-1 md:max-w-6xl md:mx-auto md:px-0">
         <div className="text-center mb-6 md:mb-12">
           <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
@@ -95,7 +119,29 @@ export default function FloorPlan() {
                   <h3 className="font-semibold text-lg">{blueprint.name} — {blueprint.floor_label}</h3>
                 </div>
 
-                <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block" />
+                <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block rounded-lg" />
+
+                {/* Tutorial overlay - only on first blueprint */}
+                {showTutorial && blueprint.id === blueprints[0]?.id && (
+                  <div
+                    className="absolute inset-0 z-30 flex items-center justify-center bg-black/40 backdrop-blur-[2px] rounded-lg animate-fade-in cursor-pointer"
+                    onClick={() => { setShowTutorial(false); setTutorialDismissed(true); }}
+                  >
+                    <div className="flex flex-col items-center gap-3 text-white animate-bounce-gentle">
+                      {isMobile ? (
+                        <Hand className="w-12 h-12 text-accent drop-shadow-lg" />
+                      ) : (
+                        <MousePointerClick className="w-12 h-12 text-accent drop-shadow-lg" />
+                      )}
+                      <p className="text-base md:text-lg font-semibold text-center px-4 drop-shadow-lg">
+                        {isMobile
+                          ? "Appuyez sur un point pour voir les détails"
+                          : "Cliquez sur un appartement pour voir les détails"}
+                      </p>
+                      <span className="text-xs text-white/70 mt-1">Touchez pour fermer</span>
+                    </div>
+                  </div>
+                )}
 
                 {apartments.filter((a) => a.zone).map((apt) => {
                   const zone = apt.zone!;
