@@ -18,6 +18,7 @@ import SiteSettings from "./pages/admin/SiteSettings";
 import AdminsManager from "./pages/admin/AdminsManager";
 import GalleryManager from "./pages/admin/GalleryManager";
 import HeroImagesManager from "./pages/admin/HeroImagesManager";
+import TypeImagesManager from "./pages/admin/TypeImagesManager";
 
 const queryClient = new QueryClient();
 
