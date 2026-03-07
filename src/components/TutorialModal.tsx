@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { X, MapPin } from "lucide-react";
+import { X, MapPin, Hand } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import tutorialBlueprint from "@/assets/tutorial-blueprint.png";
-import tutorialHand from "@/assets/tutorial-hand-pointer.png";
 
 const TUTORIAL_KEY = "tutorial_dismissed_v2";
 
@@ -69,17 +68,21 @@ export default function TutorialModal() {
             alt="Plan interactif"
             className="w-full h-auto object-contain"
           />
-          {/* Animated tapping hand */}
-          <img
-            src={tutorialHand}
-            alt=""
-            className="absolute w-16 h-16 md:w-24 md:h-24 pointer-events-none animate-tutorial-tap"
-            style={{ top: "35%", left: "45%" }}
-          />
-          {/* Ripple effect at tap point */}
+          {/* Animated tapping hand icon - centered on CO3 zone */}
           <div
-            className="absolute w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-accent pointer-events-none animate-tutorial-ripple"
-            style={{ top: "52%", left: "52%", transform: "translate(-50%, -50%)" }}
+            className="absolute pointer-events-none animate-tutorial-tap"
+            style={{ top: "18%", left: "52%" }}
+          >
+            <Hand className="w-10 h-10 md:w-14 md:h-14 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" fill="white" fillOpacity={0.15} />
+          </div>
+          {/* Ripple effect at fingertip position */}
+          <div
+            className="absolute w-6 h-6 md:w-10 md:h-10 rounded-full border-2 border-white pointer-events-none animate-tutorial-ripple"
+            style={{ top: "28%", left: "56%", transform: "translate(-50%, -50%)" }}
+          />
+          <div
+            className="absolute w-3 h-3 md:w-5 md:h-5 rounded-full bg-white/40 pointer-events-none animate-tutorial-ripple"
+            style={{ top: "28%", left: "56%", transform: "translate(-50%, -50%)", animationDelay: "0.15s" }}
           />
         </div>
 
