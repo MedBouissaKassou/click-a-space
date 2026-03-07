@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { X } from "lucide-react";
 
 interface TypeImage {
   id: string;
@@ -14,6 +15,7 @@ interface TypeImagesSectionProps {
 
 export default function TypeImagesSection({ category, label }: TypeImagesSectionProps) {
   const [images, setImages] = useState<TypeImage[]>([]);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   useEffect(() => {
     supabase
@@ -38,29 +40,56 @@ export default function TypeImagesSection({ category, label }: TypeImagesSection
   }
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">{label}</h2>
-        <div className="grid grid-cols-2 gap-4 md:gap-6">
-          {images.slice(0, 4).map((img) => (
-            <div key={img.id} className="overflow-hidden rounded-xl border border-border bg-card">
-              <div className="aspect-[4/3]">
-                <img
-                  src={img.image_url}
-                  alt={img.title || label}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              {img.title && (
-                <div className="p-3 text-center">
-                  <p className="font-semibold text-sm">{img.title}</p>
+    <>
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">{label}</h2>
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            {images.slice(0, 4).map((img) => (
+              <div
+                key={img.id}
+                className="overflow-hidden rounded-xl border border-border bg-card cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => setLightbox(img.image_url)}
+              >
+                <div className="aspect-[4/3]">
+                  <img
+                    src={img.image_url}
+                    alt={img.title || label}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
-              )}
-            </div>
-          ))}
+                {img.title && (
+                  <div className="p-3 text-center">
+                    <p className="font-semibold text-sm">{img.title}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute top-4 right-4 z-50 bg-background/80 backdrop-blur-sm text-foreground rounded-full p-2 hover:bg-background transition-colors"
+            onClick={() => setLightbox(null)}
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img
+            src={lightbox}
+            alt={label}
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
   );
 }
