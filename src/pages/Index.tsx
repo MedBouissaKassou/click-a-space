@@ -4,6 +4,7 @@ import GalleryCarousel from "@/components/GalleryCarousel";
 import FloorPlan from "@/components/FloorPlan";
 import TypeImagesSection from "@/components/TypeImagesSection";
 import Footer from "@/components/Footer";
+import TutorialModal from "@/components/TutorialModal";
 import { Building, Ruler, ShieldCheck } from "lucide-react";
 
 const features = [
@@ -17,6 +18,7 @@ export default function Index() {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <TutorialModal />
 
       <section id="projet" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
