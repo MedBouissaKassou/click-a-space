@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface GalleryImage {
   id: string;
@@ -9,8 +10,24 @@ interface GalleryImage {
   image_url: string;
 }
 
+function ImageCard({ img }: { img: GalleryImage }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-card">
+      <div className="aspect-video">
+        <img src={img.image_url} alt={img.title || "Réalisation"} className="w-full h-full object-cover" loading="lazy" />
+      </div>
+      {img.title && (
+        <div className="p-4">
+          <p className="font-semibold text-sm">{img.title}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function GalleryCarousel() {
   const [images, setImages] = useState<GalleryImage[]>([]);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     supabase.from("gallery_images").select("*").order("display_order").then(({ data }) => {
@@ -45,26 +62,28 @@ export default function GalleryCarousel() {
             Découvrez nos constructions et nos projets livrés
           </p>
         </div>
-        <Carousel opts={{ align: "start", loop: true }} plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]} className="w-full">
-          <CarouselContent className="-ml-4">
+
+        {/* Desktop: grid layout */}
+        {!isMobile ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {images.map((img) => (
-              <CarouselItem key={img.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="overflow-hidden rounded-xl border border-border bg-card">
-                  <div className="aspect-video">
-                    <img src={img.image_url} alt={img.title || "Réalisation"} className="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                  {img.title && (
-                    <div className="p-4">
-                      <p className="font-semibold text-sm">{img.title}</p>
-                    </div>
-                  )}
-                </div>
-              </CarouselItem>
+              <ImageCard key={img.id} img={img} />
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </div>
+        ) : (
+          /* Mobile: carousel */
+          <Carousel opts={{ align: "start", loop: true }} plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]} className="w-full">
+            <CarouselContent className="-ml-4">
+              {images.map((img) => (
+                <CarouselItem key={img.id} className="pl-4 basis-[85%]">
+                  <ImageCard img={img} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        )}
       </div>
     </section>
   );
