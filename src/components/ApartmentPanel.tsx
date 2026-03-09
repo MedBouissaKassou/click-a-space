@@ -147,7 +147,6 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
                 </a>
               )}
             </div>
-          </div>
         )}
       </div>
     </div>
