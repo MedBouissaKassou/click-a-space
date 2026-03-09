@@ -20,7 +20,7 @@ export default function Index() {
       <Hero />
       
 
-      <section id="projet" className="py-20 px-4">
+      <section id="projet" className="py-12 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Notre vision</p>
@@ -41,11 +41,9 @@ export default function Index() {
         </div>
       </section>
 
-      <div className="py-4 md:py-0" />
       <TypeImagesSection category="s1" label="S+1" />
-      <div className="py-1 md:py-0" />
       <TypeImagesSection category="s2" label="S+2" />
-      <div className="py-4 md:py-0" />
+      <div className="py-2 md:py-0" />
       <FloorPlan />
       <GalleryCarousel />
       <Footer />
