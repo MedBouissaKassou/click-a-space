@@ -89,13 +89,12 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
 
             {/* Plan image */}
             <div className="bg-card border border-border rounded-xl overflow-hidden mb-5">
-                <h2 className="text-2xl font-bold font-heading">
-                  {apt.name} {apt.tranche ? `(${apt.tranche})` : ""}
-                </h2>
-                <span className={`${statusClass} text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full`}>
-                  {apt.status}
-                </span>
-              </div>
+              <img
+                src={planImage}
+                alt={`Plan ${apt.name}`}
+                className="w-full h-auto object-contain"
+              />
+            </div>
 
               {/* Info grid */}
               <div className="bg-card border border-border rounded-xl p-4 grid grid-cols-2 gap-3 mb-5">
