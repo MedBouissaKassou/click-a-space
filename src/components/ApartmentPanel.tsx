@@ -76,20 +76,19 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
             <div className="animate-spin w-8 h-8 border-2 border-accent border-t-transparent rounded-full" />
           </div>
         ) : (
-          <div className="p-5 pt-14 md:flex md:gap-6 md:items-start">
-            {/* Plan image */}
-            <div className="md:w-1/2 flex-shrink-0 bg-card border border-border rounded-xl overflow-hidden mb-5 md:mb-0">
-              <img
-                src={planImage}
-                alt={`Plan ${apt.name}`}
-                className="w-full h-auto object-contain"
-              />
+          <div className="p-5 pt-14">
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-4">
+              <h2 className="text-2xl font-bold font-heading">
+                {apt.name} {apt.tranche ? `(${apt.tranche})` : ""}
+              </h2>
+              <span className={`${statusClass} text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full`}>
+                {apt.status}
+              </span>
             </div>
 
-            {/* Right column */}
-            <div className="md:w-1/2 flex flex-col">
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-4">
+            {/* Plan image */}
+            <div className="bg-card border border-border rounded-xl overflow-hidden mb-5">
                 <h2 className="text-2xl font-bold font-heading">
                   {apt.name} {apt.tranche ? `(${apt.tranche})` : ""}
                 </h2>
@@ -148,7 +147,6 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
                 </a>
               )}
             </div>
-          </div>
         )}
       </div>
     </div>
