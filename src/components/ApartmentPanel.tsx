@@ -78,11 +78,11 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
         ) : (
           <div className="p-4 md:p-6 pt-12 md:pt-14 flex flex-col min-h-0 flex-1">
             {/* Header */}
-            <div className="flex items-center gap-3 mb-3 md:mb-4 flex-shrink-0">
+            <div className="flex items-center justify-between mb-3 md:mb-4 flex-shrink-0">
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-heading">
                 {apt.name} {apt.tranche ? `(${apt.tranche})` : ""}
               </h2>
-              <span className={`${statusClass} text-accent-foreground text-xs md:text-sm font-semibold px-3 py-1 rounded-full`}>
+              <span className={`${statusClass} text-accent-foreground text-xs md:text-sm font-semibold px-3 py-1 rounded-full flex-shrink-0 ml-auto`}>
                 {apt.status}
               </span>
             </div>
