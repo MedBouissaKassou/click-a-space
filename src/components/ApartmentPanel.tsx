@@ -54,13 +54,13 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
   const planImage = apt?.image_blueprint_url || blueprintImg;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center md:justify-center" onClick={onClose}>
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
       {/* Panel */}
       <div
-        className="relative w-full max-w-lg h-full bg-background border-l border-border shadow-2xl overflow-y-auto animate-slide-in-right"
+        className="relative w-full max-w-lg md:max-w-3xl h-full md:h-[85vh] md:rounded-2xl bg-background border-l md:border border-border shadow-2xl overflow-y-auto animate-slide-in-right"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
