@@ -97,42 +97,42 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
             </div>
 
             {/* Info grid - responsive text */}
-            <div className="bg-card border border-border rounded-xl p-3 md:p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-3 md:mb-4 flex-shrink-0">
+            <div className="bg-card border border-border rounded-xl p-3 md:p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-3 md:mb-4 flex-shrink-0 text-center">
               {apt.bloc && (
                 <div className="text-xs sm:text-sm md:text-base">
-                  <span className="text-muted-foreground">Bloc </span>
-                  <span className="font-semibold">{apt.bloc}</span>
+                  <div className="text-muted-foreground">Bloc</div>
+                  <div className="font-semibold">{apt.bloc}</div>
                 </div>
               )}
               {apt.niveau && (
                 <div className="text-xs sm:text-sm md:text-base">
-                  <span className="text-muted-foreground">Niveau </span>
-                  <span className="font-semibold">{apt.niveau}</span>
+                  <div className="text-muted-foreground">Niveau</div>
+                  <div className="font-semibold">{apt.niveau}</div>
                 </div>
               )}
               {apt.rooms && (
                 <div className="text-xs sm:text-sm md:text-base">
-                  <span className="text-muted-foreground">Pièces </span>
-                  <span className="font-semibold">{apt.rooms}</span>
+                  <div className="text-muted-foreground">Pièces</div>
+                  <div className="font-semibold">{apt.rooms}</div>
                 </div>
               )}
               {apt.surface && (
                 <div className="text-xs sm:text-sm md:text-base">
-                  <span className="text-muted-foreground">Surface </span>
-                  <span className="font-bold">{apt.surface} m²</span>
+                  <div className="text-muted-foreground">Surface</div>
+                  <div className="font-bold">{apt.surface} m²</div>
                 </div>
               )}
               {apt.prix && (
                 <div className="text-xs sm:text-sm md:text-base">
-                  <span className="text-muted-foreground">Prix TTC </span>
-                  <span className="font-bold text-gold">{formatPrice(apt.prix)}</span>
+                  <div className="text-muted-foreground">Prix TTC</div>
+                  <div className="font-bold text-gold">{formatPrice(apt.prix)}</div>
                 </div>
               )}
               <div className="text-xs sm:text-sm md:text-base">
-                <span className="text-muted-foreground">Statut </span>
-                <span className={`font-bold ${apt.status === "Disponible" ? "text-available" : apt.status === "Réservé" ? "text-reserved" : "text-sold"}`}>
+                <div className="text-muted-foreground">Statut</div>
+                <div className={`font-bold ${apt.status === "Disponible" ? "text-available" : apt.status === "Réservé" ? "text-reserved" : "text-sold"}`}>
                   {apt.status}
-                </span>
+                </div>
               </div>
             </div>
 
