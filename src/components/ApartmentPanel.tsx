@@ -76,7 +76,7 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
             <div className="animate-spin w-8 h-8 border-2 border-accent border-t-transparent rounded-full" />
           </div>
         ) : (
-          <div className="p-5 pt-14 md:flex md:gap-6 md:items-start">
+          <div className="p-5 pt-14">
             {/* Plan image */}
             <div className="md:w-1/2 flex-shrink-0 bg-card border border-border rounded-xl overflow-hidden mb-5 md:mb-0">
               <img
