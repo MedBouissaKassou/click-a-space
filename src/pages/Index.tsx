@@ -41,8 +41,11 @@ export default function Index() {
         </div>
       </section>
 
+      <div className="py-4 md:py-0" />
       <TypeImagesSection category="s1" label="S+1" />
+      <div className="py-4 md:py-0" />
       <TypeImagesSection category="s2" label="S+2" />
+      <div className="py-4 md:py-0" />
       <FloorPlan />
       <GalleryCarousel />
       <Footer />

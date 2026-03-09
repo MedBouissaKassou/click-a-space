@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice } from "@/data/apartments";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ApartmentPanel from "@/components/ApartmentPanel";
 
 interface Blueprint {
   id: string;
@@ -34,7 +34,7 @@ export default function FloorPlan() {
   const [apartmentsByBp, setApartmentsByBp] = useState<Record<string, Apartment[]>>({});
   const [hovered, setHovered] = useState<Apartment | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-  const navigate = useNavigate();
+  const [selectedAptId, setSelectedAptId] = useState<string | null>(null);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function FloorPlan() {
           <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
           <div className="w-16 h-1 bg-accent mx-auto mt-3 rounded-full" />
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4 animate-pop-in">
             {isMobile
               ? "Appuyez sur un point coloré pour voir les détails"
               : "Cliquez sur un appartement pour découvrir ses détails"}
@@ -89,19 +89,16 @@ export default function FloorPlan() {
           {blueprints.map((blueprint) => {
             const apartments = apartmentsByBp[blueprint.id] || [];
             return (
-              <div className="relative inline-block w-full rounded-xl shadow-lg overflow-hidden border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-1 md:p-2">
-                {/* Plan name overlay */}
+              <div key={blueprint.id} className="relative inline-block w-full rounded-xl shadow-lg overflow-hidden border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-1 md:p-2">
                 <div className="absolute top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm px-4 py-2 border-b border-border">
                   <h3 className="font-semibold text-lg">{blueprint.name} — {blueprint.floor_label}</h3>
                 </div>
 
                 <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block rounded-lg" />
 
-
                 {apartments.filter((a) => a.zone).map((apt) => {
                   const zone = apt.zone!;
                   if (isMobile) {
-                    // Mobile: show a colored dot at the center of the zone
                     return (
                       <button
                         key={apt.id}
@@ -111,11 +108,10 @@ export default function FloorPlan() {
                           top: `${zone.y + zone.height / 2}%`,
                           transform: "translate(-50%, -50%)",
                         }}
-                        onClick={() => navigate(`/appartement/${apt.id}`)}
+                        onClick={() => setSelectedAptId(apt.id)}
                       />
                     );
                   }
-                  // Desktop: invisible clickable zone with hover tooltip
                   return (
                     <div
                       key={apt.id}
@@ -132,7 +128,7 @@ export default function FloorPlan() {
                       }}
                       onMouseMove={(e) => setTooltipPos({ x: e.clientX + 16, y: e.clientY - 10 })}
                       onMouseLeave={() => setHovered(null)}
-                      onClick={() => navigate(`/appartement/${apt.id}`)}
+                      onClick={() => setSelectedAptId(apt.id)}
                     />
                   );
                 })}
@@ -161,6 +157,11 @@ export default function FloorPlan() {
           </div>
         )}
       </div>
+
+      <ApartmentPanel
+        apartmentId={selectedAptId}
+        onClose={() => setSelectedAptId(null)}
+      />
     </section>
   );
 }
