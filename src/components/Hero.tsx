@@ -25,7 +25,7 @@ export default function Hero() {
     if (images.length <= 1) return;
     const interval = setInterval(() => {
       setCurrent((c) => (c + 1) % images.length);
-    }, 8000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [images.length]);
 
