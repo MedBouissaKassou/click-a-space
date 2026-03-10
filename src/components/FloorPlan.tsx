@@ -86,7 +86,7 @@ export default function FloorPlan() {
           <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
           <div className="w-16 h-1 bg-accent mx-auto mt-3 rounded-full" />
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(10px)', transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <p className={`text-muted-foreground text-lg max-w-2xl mx-auto mt-4 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-100 translate-y-2 scale-[0.98]"}`}>
             {isMobile
               ? "Appuyez sur un point coloré pour voir les détails"
               : "Cliquez sur un appartement pour découvrir ses détails"}
