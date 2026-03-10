@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Building2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import ContactDialog from "./ContactDialog";
 import { Button } from "./ui/button";
+import logo from "@/assets/univers-immobilier-logo.png";
 
 export default function Footer() {
   const [settings, setSettings] = useState<Record<string, string>>({});
