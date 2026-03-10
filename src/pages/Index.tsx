@@ -5,12 +5,13 @@ import FloorPlan from "@/components/FloorPlan";
 import TypeImagesSection from "@/components/TypeImagesSection";
 import Footer from "@/components/Footer";
 
-import { Building, Ruler, ShieldCheck } from "lucide-react";
+import { Building, Ruler, TreePine } from "lucide-react";
+import EmplacementSection from "@/components/EmplacementSection";
 
 const features = [
-  { icon: Building, title: "Architecture moderne", desc: "Design contemporain avec matériaux nobles et finitions soignées." },
-  { icon: Ruler, title: "65 à 115 m²", desc: "Des surfaces adaptées à tous les besoins, du couple à la grande famille." },
-  { icon: ShieldCheck, title: "Livraison garantie", desc: "Tranches livrables entre 2025 et fin 2026 avec garanties constructeur." },
+  { icon: Building, title: "Architecture contemporaine", desc: "Design contemporain avec matériaux nobles et finitions soignées." },
+  { icon: Ruler, title: "61 à 113 m²", desc: "Des surfaces adaptées à tous les besoins, du couple à la grande famille." },
+  { icon: TreePine, title: "Emplacement", desc: "Projet noyé dans la verdure" },
 ];
 
 export default function Index() {
@@ -25,6 +26,7 @@ export default function Index() {
           <div className="text-center mb-12">
             <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Notre vision</p>
             <h2 className="text-3xl md:text-4xl font-bold">Projet en cours</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">Bienvenue dans un espace où le luxe rencontre le confort.</p>
             <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -41,6 +43,7 @@ export default function Index() {
         </div>
       </section>
 
+      <EmplacementSection />
       <TypeImagesSection category="s1" label="S+1" />
       <TypeImagesSection category="s2" label="S+2" />
       <div className="py-2 md:py-0" />
