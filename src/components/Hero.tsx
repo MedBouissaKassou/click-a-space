@@ -22,14 +22,14 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (!images || images.length <= 1) return;
     const interval = setInterval(() => {
       setCurrent((c) => (c + 1) % images.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images]);
 
-  const bgImages = images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
+  const bgImages = images === null ? [] : images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
 
   return (
     <section className="relative h-[50vh] min-h-[400px] md:h-[70vh] md:min-h-[500px] flex items-end overflow-hidden">
