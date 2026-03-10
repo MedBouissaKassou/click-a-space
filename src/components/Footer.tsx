@@ -68,29 +68,20 @@ export default function Footer() {
           <h4 className="font-semibold mb-3">Localisation</h4>
           <p className="text-sm opacity-70 mb-3">{settings.contact_address || "Tunis, Tunisie"}</p>
           <div className="rounded-lg overflow-hidden border border-primary-foreground/20">
-            {settings.google_maps_url ? (
-              <iframe
-                title="Localisation"
-                src={settings.google_maps_url.includes("embed") ? settings.google_maps_url : `https://www.google.com/maps?q=${encodeURIComponent(settings.google_maps_url)}&output=embed`}
-                width="100%"
-                height="180"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            ) : (
-              <iframe
-                title="Localisation"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1600!2d10.25351338368082!3d36.86645097330852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDUxJzU5LjIiTiAxMMKwMTUnMTIuNSJF!5e0!3m2!1sfr!2stn!4v1700000000000"
-                width="100%"
-                height="180"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            )}
+            <iframe
+              title="Localisation"
+              src={
+                settings.google_maps_url?.includes("/embed")
+                  ? settings.google_maps_url
+                  : `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(settings.contact_address || "Rue du parc, Soukra, Tunisie")}`
+              }
+              width="100%"
+              height="180"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>
