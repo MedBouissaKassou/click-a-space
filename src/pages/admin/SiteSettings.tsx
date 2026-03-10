@@ -22,6 +22,7 @@ const settingLabels: Record<string, { label: string; type: "text" | "textarea" }
   facebook_url: { label: "Lien Facebook", type: "text" },
   instagram_url: { label: "Lien Instagram", type: "text" },
   footer_text: { label: "Texte du pied de page", type: "text" },
+  google_maps_url: { label: "Lien Google Maps (localisation)", type: "text" },
 };
 
 export default function SiteSettings() {
