@@ -12,7 +12,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 h-16">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="L'Univers Immobilier" className="h-10 w-auto" />
+          <img src={logo} alt="L'Univers Immobilier" className="h-14 w-auto dark:bg-white dark:rounded-md dark:px-2 dark:py-1" />
         </Link>
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex items-center gap-8 text-sm font-medium text-muted-foreground">
