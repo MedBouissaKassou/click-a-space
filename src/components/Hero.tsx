@@ -40,7 +40,7 @@ export default function Hero() {
             key={i}
             src={src}
             alt="Résidence OCEANA"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ${
               i === current ? "opacity-100" : "opacity-0"
             }`}
           />
