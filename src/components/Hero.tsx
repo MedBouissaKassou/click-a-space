@@ -8,7 +8,7 @@ interface HeroImage {
 }
 
 export default function Hero() {
-  const [images, setImages] = useState<HeroImage[]>([]);
+  const [images, setImages] = useState<HeroImage[] | null>(null);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -17,19 +17,19 @@ export default function Hero() {
       .select("id, image_url")
       .order("display_order")
       .then(({ data }) => {
-        if (data && data.length > 0) setImages(data as HeroImage[]);
+        setImages(data && data.length > 0 ? (data as HeroImage[]) : []);
       });
   }, []);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (!images || images.length <= 1) return;
     const interval = setInterval(() => {
       setCurrent((c) => (c + 1) % images.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images]);
 
-  const bgImages = images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
+  const bgImages = images === null ? [] : images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
 
   return (
     <section className="relative h-[50vh] min-h-[400px] md:h-[70vh] md:min-h-[500px] flex items-end overflow-hidden">
