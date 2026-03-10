@@ -60,13 +60,12 @@ export default function FloorPlan() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-
   useEffect(() => {
     if (blueprints.length === 0 || !sectionRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: "0px 0px -12% 0px" }
     );
 
     observer.observe(sectionRef.current);
@@ -82,7 +81,7 @@ export default function FloorPlan() {
           <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Explorez</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Plan Interactif</h2>
           <div className="w-16 h-1 bg-accent mx-auto mt-3 rounded-full" />
-          <p className={`text-muted-foreground text-lg max-w-2xl mx-auto mt-4 ${isVisible ? "animate-pulse-slow" : "opacity-0"}`}>
+          <p className={`text-muted-foreground text-lg max-w-2xl mx-auto mt-4 transition-opacity duration-300 ${isVisible ? "animate-pulse opacity-100" : "opacity-0"}`}>
             {isMobile
               ? "Appuyez sur un point coloré pour voir les détails"
               : "Cliquez sur un appartement pour découvrir ses détails"}
