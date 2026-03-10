@@ -34,16 +34,7 @@ export default function Hero() {
   return (
     <section className="relative md:h-[70vh] md:min-h-[500px] flex flex-col md:flex-row md:items-end">
       {/* Image - natural aspect ratio on mobile, absolute fill on desktop */}
-      <div className="relative w-full md:absolute md:inset-0 md:h-full overflow-hidden">
-        {/* Invisible first image to set natural height on mobile */}
-        {bgImages.length > 0 && (
-          <img
-            src={bgImages[0]}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-auto invisible md:hidden"
-          />
-        )}
+      <div className="relative w-full aspect-video md:aspect-auto md:absolute md:inset-0 md:h-full overflow-hidden">
         {bgImages.map((src, i) => (
           <img
             key={i}
