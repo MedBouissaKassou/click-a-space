@@ -32,15 +32,15 @@ export default function Hero() {
   const bgImages = images === null ? [] : images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
 
   return (
-    <section className="relative min-h-[75svh] md:h-[70vh] md:min-h-[500px] flex items-end">
-      {/* Image container with overflow hidden */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative md:h-[70vh] md:min-h-[500px] flex flex-col md:flex-row md:items-end">
+      {/* Image - natural flow on mobile, absolute on desktop */}
+      <div className="relative w-full h-[40vh] md:absolute md:inset-0 md:h-full overflow-hidden">
         {bgImages.map((src, i) => (
           <img
             key={i}
             src={src}
             alt="Résidence OCEANA"
-            className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               i === current ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -48,7 +48,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-6 md:pb-16 mt-auto pt-16 md:pt-20">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-6 md:pb-16 mt-auto pt-4 md:pt-20">
         <p className="text-gold text-xs md:text-sm font-semibold tracking-widest uppercase mb-2 md:mb-3 bg-background/70 backdrop-blur-sm inline-block px-3 py-1 rounded">
           Résidence de standing
         </p>
