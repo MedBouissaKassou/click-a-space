@@ -61,13 +61,21 @@ export default function FloorPlan() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (blueprints.length === 0 || !sectionRef.current) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
       { threshold: 0.2 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [blueprints.length]);
 
   if (blueprints.length === 0) return null;
 
