@@ -60,6 +60,7 @@ export default function FloorPlan() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+
   useEffect(() => {
     if (blueprints.length === 0 || !sectionRef.current) return;
 
