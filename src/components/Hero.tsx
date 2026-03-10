@@ -34,7 +34,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[75svh] md:h-[70vh] md:min-h-[500px] flex items-end">
       {/* Image container with overflow hidden */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 md:inset-0 top-0 h-[55%] md:h-full overflow-hidden">
         {bgImages.map((src, i) => (
           <img
             key={i}
