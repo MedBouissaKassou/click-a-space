@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Building2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import ContactDialog from "./ContactDialog";
 import { Button } from "./ui/button";
+import logo from "@/assets/univers-immobilier-logo.png";
 
 export default function Footer() {
   const [settings, setSettings] = useState<Record<string, string>>({});
@@ -25,8 +25,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="w-5 h-5" />
-            <span className="text-lg font-bold font-heading">OCEANA</span>
+            <img src={logo} alt="L'Univers Immobilier" className="h-10 w-auto" />
           </div>
           <p className="text-sm opacity-70">
             L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein.
@@ -69,16 +68,29 @@ export default function Footer() {
           <h4 className="font-semibold mb-3">Localisation</h4>
           <p className="text-sm opacity-70 mb-3">{settings.contact_address || "Tunis, Tunisie"}</p>
           <div className="rounded-lg overflow-hidden border border-primary-foreground/20">
-            <iframe
-              title="Localisation OCEANA"
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1600!2d10.25351338368082!3d36.86645097330852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDUxJzU5LjIiTiAxMMKwMTUnMTIuNSJF!5e0!3m2!1sfr!2stn!4v1700000000000"
-              width="100%"
-              height="180"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            {settings.google_maps_url ? (
+              <iframe
+                title="Localisation"
+                src={settings.google_maps_url.includes("embed") ? settings.google_maps_url : `https://www.google.com/maps?q=${encodeURIComponent(settings.google_maps_url)}&output=embed`}
+                width="100%"
+                height="180"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : (
+              <iframe
+                title="Localisation"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1600!2d10.25351338368082!3d36.86645097330852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDUxJzU5LjIiTiAxMMKwMTUnMTIuNSJF!5e0!3m2!1sfr!2stn!4v1700000000000"
+                width="100%"
+                height="180"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            )}
           </div>
         </div>
       </div>

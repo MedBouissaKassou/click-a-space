@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Building2, Sun, Moon } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "./ContactDialog";
+import logo from "@/assets/univers-immobilier-logo.png";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -11,10 +12,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 h-16">
         <Link to="/" className="flex items-center gap-2">
-          <Building2 className="w-6 h-6 text-accent" />
-          <span className="text-xl font-bold font-heading tracking-tight text-foreground">
-            OCE<span className="text-gold">ANA</span>
-          </span>
+          <img src={logo} alt="L'Univers Immobilier" className="h-10 w-auto" />
         </Link>
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex items-center gap-8 text-sm font-medium text-muted-foreground">
