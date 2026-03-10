@@ -131,6 +131,13 @@
   .animate-bounce-gentle {
     animation: bounce-gentle 1.5s ease-in-out infinite;
   }
+  @keyframes hint-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+  .animate-hint-zoom {
+    animation: hint-zoom 1.8s ease-in-out infinite;
+  }
   .text-gold {
     color: hsl(var(--gold));
   }
