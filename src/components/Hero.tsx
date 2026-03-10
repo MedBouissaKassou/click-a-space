@@ -32,21 +32,23 @@ export default function Hero() {
   const bgImages = images === null ? [] : images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
 
   return (
-    <section className="relative h-[85vh] min-h-[620px] md:h-[70vh] md:min-h-[500px] flex items-end overflow-hidden">
-      {bgImages.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt="Résidence OCEANA"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
+    <section className="relative min-h-[100svh] md:h-[70vh] md:min-h-[500px] flex items-end">
+      {/* Image container with overflow hidden */}
+      <div className="absolute inset-0 overflow-hidden">
+        {bgImages.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt="Résidence OCEANA"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              i === current ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-4 md:pb-16 mt-auto pt-16 md:pt-20">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-6 md:pb-16 mt-auto pt-16 md:pt-20">
         <p className="text-gold text-xs md:text-sm font-semibold tracking-widest uppercase mb-2 md:mb-3 bg-background/70 backdrop-blur-sm inline-block px-3 py-1 rounded">
           Résidence de standing
         </p>
@@ -57,7 +59,7 @@ export default function Hero() {
           Découvrez nos appartements de standing allant de 65 à 115 m², livrés clé en main avec des finitions haut de gamme.
         </p>
 
-        {/* Badges - inline on mobile, absolute on desktop */}
+        {/* Badges */}
         <div className="flex flex-col gap-1.5 md:gap-2 mt-3 md:absolute md:bottom-8 md:right-8 md:mt-0 md:items-end md:z-10">
           <div className="relative group animate-badge-slide-in">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75 animate-glow" />
