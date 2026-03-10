@@ -46,28 +46,28 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-12 md:pb-16 mt-auto pt-20">
-        <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-3 bg-background/70 backdrop-blur-sm inline-block px-3 py-1 rounded">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pb-4 md:pb-16 mt-auto pt-16 md:pt-20">
+        <p className="text-gold text-xs md:text-sm font-semibold tracking-widest uppercase mb-2 md:mb-3 bg-background/70 backdrop-blur-sm inline-block px-3 py-1 rounded">
           Résidence de standing
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-2 md:mb-4">
           Résidence OCEANA
         </h1>
-        <p className="text-black dark:text-white text-lg max-w-xl">
+        <p className="text-black dark:text-white text-base md:text-lg max-w-xl">
           Découvrez nos appartements de standing allant de 65 à 115 m², livrés clé en main avec des finitions haut de gamme.
         </p>
 
         {/* Badges - inline on mobile, absolute on desktop */}
-        <div className="flex flex-col gap-2 mt-5 md:absolute md:bottom-8 md:right-8 md:mt-0 md:items-end md:z-10">
+        <div className="flex flex-col gap-1.5 md:gap-2 mt-3 md:absolute md:bottom-8 md:right-8 md:mt-0 md:items-end md:z-10">
           <div className="relative group animate-badge-slide-in">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75 animate-glow" />
-            <span className="relative block bg-navy text-white text-xs sm:text-sm md:text-base font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-2xl tracking-wide">
+            <span className="relative block bg-navy text-white text-xs sm:text-sm md:text-base font-bold px-3 py-1.5 md:px-6 md:py-3 rounded-lg shadow-2xl tracking-wide">
               💳 Facilité de paiements jusqu'en 2028
             </span>
           </div>
           <div className="relative group animate-badge-slide-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
             <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75 animate-glow" style={{ animationDelay: '1s' }} />
-            <span className="relative block bg-navy text-white text-xs sm:text-sm md:text-base font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-2xl tracking-wide">
+            <span className="relative block bg-navy text-white text-xs sm:text-sm md:text-base font-bold px-3 py-1.5 md:px-6 md:py-3 rounded-lg shadow-2xl tracking-wide">
               🏷️ A partir de 245 MD TTC
             </span>
           </div>
@@ -75,7 +75,7 @@ export default function Hero() {
 
         <a
           href="#plan"
-          className="inline-block mt-5 md:mt-6 px-8 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+          className="inline-block mt-3 md:mt-6 px-6 py-2.5 md:px-8 md:py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity text-sm md:text-base"
         >
           Explorer le plan
         </a>
