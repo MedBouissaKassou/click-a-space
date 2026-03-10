@@ -5,12 +5,13 @@ import FloorPlan from "@/components/FloorPlan";
 import TypeImagesSection from "@/components/TypeImagesSection";
 import Footer from "@/components/Footer";
 
-import { Building, Ruler, ShieldCheck } from "lucide-react";
+import { Building, Ruler, TreePine } from "lucide-react";
+import EmplacementSection from "@/components/EmplacementSection";
 
 const features = [
-  { icon: Building, title: "Architecture moderne", desc: "Design contemporain avec matériaux nobles et finitions soignées." },
-  { icon: Ruler, title: "65 à 115 m²", desc: "Des surfaces adaptées à tous les besoins, du couple à la grande famille." },
-  { icon: ShieldCheck, title: "Livraison garantie", desc: "Tranches livrables entre 2025 et fin 2026 avec garanties constructeur." },
+  { icon: Building, title: "Architecture contemporaine", desc: "Design contemporain avec matériaux nobles et finitions soignées." },
+  { icon: Ruler, title: "61 à 113 m²", desc: "Des surfaces adaptées à tous les besoins, du couple à la grande famille." },
+  { icon: TreePine, title: "Emplacement", desc: "Projet noyé dans la verdure" },
 ];
 
 export default function Index() {
