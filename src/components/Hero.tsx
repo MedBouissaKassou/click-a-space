@@ -8,7 +8,7 @@ interface HeroImage {
 }
 
 export default function Hero() {
-  const [images, setImages] = useState<HeroImage[]>([]);
+  const [images, setImages] = useState<HeroImage[] | null>(null);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Hero() {
       .select("id, image_url")
       .order("display_order")
       .then(({ data }) => {
-        if (data && data.length > 0) setImages(data as HeroImage[]);
+        setImages(data && data.length > 0 ? (data as HeroImage[]) : []);
       });
   }, []);
 
