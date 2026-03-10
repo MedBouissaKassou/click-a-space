@@ -26,6 +26,7 @@ export default function Index() {
           <div className="text-center mb-12">
             <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-2">Notre vision</p>
             <h2 className="text-3xl md:text-4xl font-bold">Projet en cours</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">Bienvenue dans un espace où le luxe rencontre le confort.</p>
             <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
