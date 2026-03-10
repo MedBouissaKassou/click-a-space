@@ -25,8 +25,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="w-5 h-5" />
-            <span className="text-lg font-bold font-heading">OCEANA</span>
+            <img src={logo} alt="L'Univers Immobilier" className="h-10 w-auto" />
           </div>
           <p className="text-sm opacity-70">
             L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein.
