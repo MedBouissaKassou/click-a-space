@@ -32,7 +32,7 @@ export default function Hero() {
   const bgImages = images === null ? [] : images.length > 0 ? images.map((i) => i.image_url) : [heroImg];
 
   return (
-    <section className="relative min-h-[100svh] md:h-[70vh] md:min-h-[500px] flex items-end">
+    <section className="relative min-h-[75svh] md:h-[70vh] md:min-h-[500px] flex items-end">
       {/* Image container with overflow hidden */}
       <div className="absolute inset-0 overflow-hidden">
         {bgImages.map((src, i) => (
