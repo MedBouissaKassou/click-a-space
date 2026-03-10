@@ -35,12 +35,12 @@ export default function Hero() {
     <section className="relative md:h-[70vh] md:min-h-[500px] flex flex-col md:flex-row md:items-end">
       {/* Image - natural aspect ratio on mobile, absolute fill on desktop */}
       <div className="relative w-full md:absolute md:inset-0 md:h-full overflow-hidden">
-        {/* Non-absolute first image sets natural height on mobile */}
+        {/* First image flows naturally to set container height on mobile */}
         {bgImages.length > 0 && (
           <img
             src={bgImages[0]}
             alt="Résidence OCEANA"
-            className={`w-full h-auto md:absolute md:inset-0 md:w-full md:h-full md:object-cover transition-opacity duration-1000 ${
+            className={`w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover transition-opacity duration-1000 ${
               0 === current ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -50,7 +50,7 @@ export default function Hero() {
             key={i + 1}
             src={src}
             alt="Résidence OCEANA"
-            className={`absolute inset-0 w-full h-auto md:h-full md:object-cover transition-opacity duration-1000 ${
+            className={`absolute top-0 left-0 w-full h-auto md:inset-0 md:h-full md:object-cover transition-opacity duration-1000 ${
               i + 1 === current ? "opacity-100" : "opacity-0"
             }`}
           />
