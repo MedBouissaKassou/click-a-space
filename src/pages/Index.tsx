@@ -43,6 +43,7 @@ export default function Index() {
         </div>
       </section>
 
+      <EmplacementSection />
       <TypeImagesSection category="s1" label="S+1" />
       <TypeImagesSection category="s2" label="S+2" />
       <div className="py-2 md:py-0" />
