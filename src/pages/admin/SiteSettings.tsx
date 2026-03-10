@@ -104,6 +104,16 @@ export default function SiteSettings() {
         </Card>
 
         <Card>
+          <CardHeader><CardTitle className="text-lg">Localisation</CardTitle></CardHeader>
+          <CardContent>
+            <div className="space-y-1">
+              <Label>{settingLabels.google_maps_url.label}</Label>
+              <Input value={values.google_maps_url || ""} onChange={(e) => setValues({ ...values, google_maps_url: e.target.value })} placeholder="https://maps.google.com/..." />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
           <CardHeader><CardTitle className="text-lg">Pied de page</CardTitle></CardHeader>
           <CardContent>
             <div className="space-y-1">
