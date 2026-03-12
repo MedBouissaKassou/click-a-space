@@ -28,6 +28,18 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
   const [apt, setApt] = useState<Apartment | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // Lock body scroll when panel is open
+  useEffect(() => {
+    if (apartmentId) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [apartmentId]);
+
   useEffect(() => {
     if (!apartmentId) {
       setApt(null);
