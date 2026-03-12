@@ -33,7 +33,7 @@ export default function Header() {
             <a href="/#projet" className="hover:text-foreground transition-colors">Projet en cours</a>
             <a href="/#plan" className="hover:text-foreground transition-colors">Plan</a>
             <ContactDialog>
-              <button className="hover:text-foreground transition-colors">Contact</button>
+              <button className="hover:text-foreground transition-colors">Nous contacter</button>
             </ContactDialog>
           </nav>
           {/* Mobile contact button */}
