@@ -6,8 +6,7 @@ import TypeImagesSection from "@/components/TypeImagesSection";
 import Footer from "@/components/Footer";
 
 import { Building, MapPin, TreePine } from "lucide-react";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { Button } from "@/components/ui/button";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -17,19 +16,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function Index() {
-  const [s, setS] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    const load = async () => {
-      const { data } = await supabase.from("site_settings").select("key, value");
-      if (data) {
-        const map: Record<string, string> = {};
-        data.forEach((r: { key: string; value: string }) => (map[r.key] = r.value));
-        setS(map);
-      }
-    };
-    load();
-  }, []);
+  const s = useSiteSettings();
 
   const cards = [
     { icon: iconMap[s.card1_icon || "building"] || iconMap.building, title: s.card1_title || "Architecture contemporaine", text: s.card1_text || "", showMap: false },

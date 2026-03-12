@@ -4,23 +4,12 @@ import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "./ContactDialog";
 import defaultLogo from "@/assets/univers-immobilier-logo.png";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
-  const [logoUrl, setLogoUrl] = useState(defaultLogo);
-
-  useEffect(() => {
-    supabase
-      .from("site_settings")
-      .select("value")
-      .eq("key", "logo_url")
-      .maybeSingle()
-      .then(({ data }) => {
-        if (data?.value) setLogoUrl(data.value);
-      });
-  }, []);
+  const settings = useSiteSettings();
+  const logoUrl = settings.logo_url || defaultLogo;
 
   return (
     <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
