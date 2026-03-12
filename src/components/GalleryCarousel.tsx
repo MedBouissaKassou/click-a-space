@@ -72,7 +72,7 @@ export default function GalleryCarousel() {
           </div>
         ) : (
           /* Mobile: carousel */
-          <Carousel opts={{ align: "start", loop: true }} plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]} className="w-full">
+          <Carousel opts={{ align: "start", loop: true }} plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]} className="w-full overflow-hidden">
             <CarouselContent className="-ml-4">
               {images.map((img) => (
                 <CarouselItem key={img.id} className="pl-4 basis-[85%]">
@@ -80,8 +80,8 @@ export default function GalleryCarousel() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
           </Carousel>
         )}
       </div>

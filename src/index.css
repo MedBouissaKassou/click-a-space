@@ -93,10 +93,22 @@
   * {
     @apply border-border;
   }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    margin: 0;
   }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
