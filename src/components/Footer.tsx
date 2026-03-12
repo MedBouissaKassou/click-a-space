@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import ContactDialog from "./ContactDialog";
 import { Button } from "./ui/button";
-import logo from "@/assets/univers-immobilier-logo.png";
+import defaultLogo from "@/assets/univers-immobilier-logo.png";
 
 export default function Footer() {
   const [settings, setSettings] = useState<Record<string, string>>({});
@@ -18,6 +18,7 @@ export default function Footer() {
       });
   }, []);
 
+  const logoUrl = settings.logo_url || defaultLogo;
   const whatsappClean = (settings.whatsapp_number || "").replace(/\s+/g, "").replace(/^\+/, "");
 
   return (
@@ -25,12 +26,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <img src={logo} alt="L'Univers Immobilier" className="h-16 w-auto" />
+            <img src={logoUrl} alt="Logo" className="h-16 w-auto" />
           </div>
           <p className="text-sm opacity-70">
-            L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein.
+            {settings.footer_text || "L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein."}
           </p>
-          {/* Social links */}
           <div className="flex items-center gap-3 mt-4">
             {settings.facebook_url && (
               <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer"
