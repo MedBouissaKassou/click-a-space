@@ -111,7 +111,7 @@ export default function FloorPlan() {
                   <h3 className="font-semibold text-lg">{blueprint.name} — {blueprint.floor_label}</h3>
                 </div>
 
-                <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block rounded-lg" />
+                <img src={blueprint.image_url} alt={blueprint.name} className="w-full h-auto block rounded-lg" loading="lazy" />
 
                 {apartments.filter((a) => a.zone).map((apt) => {
                   const zone = apt.zone!;

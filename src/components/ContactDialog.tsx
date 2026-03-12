@@ -1,29 +1,16 @@
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 interface ContactDialogProps {
   children: React.ReactNode;
 }
 
 export default function ContactDialog({ children }: ContactDialogProps) {
-  const [phone, setPhone] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-
-  useEffect(() => {
-    supabase
-      .from("site_settings")
-      .select("key, value")
-      .in("key", ["contact_phone", "whatsapp_number"])
-      .then(({ data }) => {
-        data?.forEach((s: { key: string; value: string }) => {
-          if (s.key === "contact_phone") setPhone(s.value);
-          if (s.key === "whatsapp_number") setWhatsapp(s.value);
-        });
-      });
-  }, []);
+  const settings = useSiteSettings();
+  const phone = settings.contact_phone || "";
+  const whatsapp = settings.whatsapp_number || "";
 
   const cleanNumber = (n: string) => n.replace(/\s+/g, "").replace(/^\+/, "");
 

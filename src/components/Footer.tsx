@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import ContactDialog from "./ContactDialog";
 import { Button } from "./ui/button";
 import defaultLogo from "@/assets/univers-immobilier-logo.png";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function Footer() {
-  const [settings, setSettings] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    supabase
-      .from("site_settings")
-      .select("key, value")
-      .then(({ data }) => {
-        const map: Record<string, string> = {};
-        data?.forEach((s: { key: string; value: string }) => (map[s.key] = s.value));
-        setSettings(map);
-      });
-  }, []);
+  const settings = useSiteSettings();
 
   const logoUrl = settings.logo_url || defaultLogo;
   const whatsappClean = (settings.whatsapp_number || "").replace(/\s+/g, "").replace(/^\+/, "");
@@ -26,7 +14,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <img src={logoUrl} alt="Logo" className="h-16 w-auto" />
+            <img src={logoUrl} alt="Logo" className="h-16 w-auto" loading="lazy" />
           </div>
           <p className="text-sm opacity-70">
             {settings.footer_text || "L'Univers Immobilier — Votre partenaire de confiance pour un investissement serein."}

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ThemeProvider } from "@/hooks/useTheme";
+import { SiteSettingsProvider } from "@/hooks/useSiteSettings";
 import Index from "./pages/Index";
 import ApartmentDetail from "./pages/ApartmentDetail";
 import NotFound from "./pages/NotFound";
@@ -27,27 +28,29 @@ const App = () => (
     <TooltipProvider>
       <ThemeProvider>
         <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/appartement/:id" element={<ApartmentDetail />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="blueprints" element={<BlueprintsManager />} />
-                <Route path="apartments" element={<ApartmentsManager />} />
-                <Route path="zone-editor" element={<ZoneEditor />} />
-                <Route path="hero-images" element={<HeroImagesManager />} />
-                <Route path="gallery" element={<GalleryManager />} />
-                <Route path="type-images" element={<TypeImagesManager />} />
-                <Route path="settings" element={<SiteSettings />} />
-                <Route path="admins" element={<AdminsManager />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <SiteSettingsProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/appartement/:id" element={<ApartmentDetail />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="blueprints" element={<BlueprintsManager />} />
+                  <Route path="apartments" element={<ApartmentsManager />} />
+                  <Route path="zone-editor" element={<ZoneEditor />} />
+                  <Route path="hero-images" element={<HeroImagesManager />} />
+                  <Route path="gallery" element={<GalleryManager />} />
+                  <Route path="type-images" element={<TypeImagesManager />} />
+                  <Route path="settings" element={<SiteSettings />} />
+                  <Route path="admins" element={<AdminsManager />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </SiteSettingsProvider>
         </AuthProvider>
       </ThemeProvider>
     </TooltipProvider>
