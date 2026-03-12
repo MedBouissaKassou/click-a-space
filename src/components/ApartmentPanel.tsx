@@ -72,7 +72,7 @@ export default function ApartmentPanel({ apartmentId, onClose }: Props) {
 
       {/* Panel */}
       <div
-        className="relative w-full max-w-lg md:max-w-5xl lg:max-w-6xl h-full md:h-[90vh] md:rounded-2xl bg-background border-l md:border border-border shadow-2xl animate-slide-in-right flex flex-col"
+        className="relative w-full max-w-lg md:max-w-5xl lg:max-w-6xl h-full md:h-[90vh] md:rounded-2xl bg-background border-l md:border border-border shadow-2xl animate-slide-in-right flex flex-col overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
