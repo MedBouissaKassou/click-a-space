@@ -80,7 +80,7 @@ export default function Hero() {
           <div className="relative group animate-badge-slide-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
             <div className="absolute -inset-1 bg-gradient-to-r from-accent via-gold to-accent rounded-lg blur-sm opacity-75 animate-glow" style={{ animationDelay: '1s' }} />
             <span className="relative block bg-navy text-white text-xs sm:text-sm md:text-base font-bold px-3 py-1.5 md:px-6 md:py-3 rounded-lg shadow-2xl tracking-wide">
-              🏷️ A partir de 245 MD TTC
+              🏷️ A partir de 274 MD TTC
             </span>
           </div>
         </div>
